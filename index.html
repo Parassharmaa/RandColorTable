@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta name="author" content="ParaZz">
+    <title>Fun With JS</title>
+    <style>
+        .caltab td {
+         padding:30px;   
+         border:2px solid black;   
+            
+        }
+        
+        .caltab table {
+            border:2px solid black; 
+            margin:auto;
+            margin-top:100px;
+            
+        }
+        
+        td {
+            width:20px;
+        }
+        
+        label {
+            min-width:50px;
+            background-color:teal;
+            margin:3%;
+            font-size: 25px;
+            color:white;
+            padding:1%;
+            border:1px outset white;
+            transition: ease-in-out, background-color 1s ease-in-out;
+             transition: ease-in-out,font-size 0.3s ease-in-out;
+        }
+        
+        input {
+            display: none;
+        }
+        
+        td {
+            transition: ease-in-out, background-color 0.2s ease-in-out;
+        }
+        
+        label:hover {
+         background-color: blueviolet; 
+        font-size: 27px;
+        }
+        
+    
+    
+    
+    </style>
+</head>
+<body>
+
+
+    <div class="caltab">
+        <table>
+            <tr><th colspan="2"><label><input type="button" id="green" value="0" onclick="changeColor('green');"> Alpha </label></th>
+                <th colspan="3"><label><input type="button" id="red" value="1" onclick="changeColor('red');"> Beta </label></th>
+<th colspan="2"><label><input type="button" id="blue" value="2" onclick="changeColor('blue');"> Gamma</label></th></tr>
+            <tr id="row1"></tr>
+            <tr id="row2"></tr>
+            <tr id="row3"></tr>
+            <tr id="row4"></tr>
+            <tr id="row5"></tr>
+        </table>
+    </div>
+<script>
+
+function randtable() {
+    for (q=1;q<6;q++) {
+     document.getElementById("row"+q).innerHTML="";
+    }
+        
+    
+    var p=1;
+    var addIn = document.createDocumentFragment();
+    for(i=1; i < 6; i++){
+        for(j=0; j<7;j++) {
+            var newDiv = document.createElement('td');
+            newDiv.id = 'r'+p;
+            addIn.appendChild(newDiv);
+            document.getElementById("row"+i).appendChild(addIn);
+            p++
+        }
+    } 
+}
+    var pre = ["#","#f","#033"]
+    v=2;
+    function changeColor(clr) {
+     var color = document.getElementById(clr);
+    v = color.value;
+        
+    }
+    function randcolor() {
+     for (n=1;n<35;n++) {
+        document.getElementById("r"+n).style.backgroundColor = pre[v]+Math.floor(Math.random() * (100 - 1)) + 1;
+  
+         
+     }
+    }
+
+
+window.setInterval(randtable,400);
+window.setInterval(randcolor,400); 
+    
+</script>
+
+</body>
+</html>
